@@ -1,0 +1,6 @@
+@SportsManagerAPI_HostAddress = https://172.27.160.1:7167
+
+GET {{SportsManagerAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

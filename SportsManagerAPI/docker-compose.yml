@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  sportsmanagerapi:
+    container_name: api_container
+    image: ${DOCKER_REGISTRY-}sportsmanagerapi
+    build:
+      context: .
+      dockerfile: SportsManagerAPI/Dockerfile
+    ports:
+      - "15001:5001"
+
+    depends_on:
+      - sql
+    environment:
+      - "MY_DB_NAME=sportdatabase"
+      - "MY_DB_HOST=sql_server_container"
+      - "MY_DB_PORT=sportdatabase"
+      - "MY_DB_USERNAME=sa"
+      - "MY_DB_PASSWORD=253962Aa"
+
+  sql:
+    container_name: sql_server_container
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    volumes:
+      - mssql_data:/var/opt/mssql
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=253962Aa
+    ports:
+      - "2433:1433"
+
+volumes:
+    mssql_data:    
+
+
+
