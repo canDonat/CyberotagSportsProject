@@ -25,7 +25,6 @@ public class DatabaseConnectionFactory : IDatabaseConnectionFactory
 			Console.WriteLine(e.Message);
 		}
 		return connection;
-		//deneme
 
 
 	}
