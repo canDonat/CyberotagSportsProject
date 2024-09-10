@@ -5,7 +5,7 @@ using SportsManagerAPI.Repositories;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-//builder.WebHost.UseUrls("http://*:5001");
+builder.WebHost.UseUrls("http://*:5001");
 
 // Add services to the container.
 //var connectionString = builder.Configuration.GetConnectionString("Default");
@@ -18,8 +18,8 @@ var dbPassowrd= Environment.GetEnvironmentVariable("MY_DB_PASSWORD") ?? @"253962
 
 
 //kendim çalýþmak için yoruma aldým 
-//var connectionString = $"Server={dbHost}; Database={dbName}; User Id={dbUsername}; Password={dbPassowrd}; TrustServerCertificate=True; MultipleActiveResultSets=true;;";
-var connectionString = builder.Configuration.GetConnectionString("Default");
+var connectionString = $"Server={dbHost}; Database={dbName}; User Id={dbUsername}; Password={dbPassowrd}; TrustServerCertificate=True; MultipleActiveResultSets=true;;";
+
 
 builder.Services.AddSingleton<IDatabaseConnectionFactory>(new DatabaseConnectionFactory(connectionString));
 
